@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+	<?define ProductName="Process Monitor"?>
+  <?define ProductVersion="1.0.0.0" ?>
+  <?define ProductCode="44018A36-ED5F-44BA-BA68-CC5D05B61A4B"?>
+  <?define UpgradeCode="6480B8F2-C457-4CC1-9BC3-9BA6B3863268"?>
+  <?define Manufacturer="eXit"?>
+</Include>

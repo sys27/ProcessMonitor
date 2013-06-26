@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <DirectoryRef Id="INSTALLFOLDER" DiskId="1">
+      <!-- ProcessMonitor.dll -->
+      <Component Id="Dll" Guid="945DDCCE-10F2-47C5-B5B2-FBDD88501573">
+        <File Id="DllFile" Name="$(var.ProcessMonitor.TargetFileName)" Source="$(var.ProcessMonitor.TargetPath)" KeyPath="yes" />
+      </Component>
+
+      <!-- ProcessMonitor.App.exe -->
+      <Component Id="App" Guid="34F0B6D6-86C5-4AFD-8562-A7E550B4D682">
+        <File Id="AppFile" Name="$(var.ProcessMonitor.App.TargetFileName)" Source="$(var.ProcessMonitor.App.TargetPath)" />
+        <CreateFolder Directory="ProcessMonitorFolder" />
+        <RemoveFolder Id="RemoveProcessFolder" Directory="ProcessMonitorFolder" On="uninstall" />
+      </Component>
+
+      <!-- ProcessMonitor.App.config -->
+      <Component Id="AppConfig" Guid="87189F52-C5A0-4C50-AB25-02E0A0967323">
+        <File Id="AppConfigFile" Name="ProcessMonitor.App.exe.config" Source="$(var.ProcessMonitor.App.TargetDir)" KeyPath="yes" />
+      </Component>
+
+      <!-- ProcessMonitor.App.pdb -->
+      <Component Id="AppPdb" Guid="F47F6D90-BA57-42EC-93D6-8CCEA50E3C45">
+        <File Id="AppPdbFile" Name="ProcessMonitor.App.pdb" Source="$(var.ProcessMonitor.App.TargetDir)" KeyPath="yes" />
+      </Component>
+
+      <!-- ProcessMonitor.Service.exe -->
+      <Component Id="Service" Guid="CEE17727-8BAE-4BAC-BFF6-85F699CE2185">
+        <File Id="ServiceFile" Name="$(var.ProcessMonitor.Service.TargetFileName)" Source="$(var.ProcessMonitor.Service.TargetPath)" KeyPath="yes" />
+        <CreateFolder Directory="MonitorServiceFolder" />
+        <RemoveFolder Id="RemoveMonitorFolder" Directory="MonitorServiceFolder" On="uninstall" />
+        <ServiceInstall Id="ServiceComponent" Type="ownProcess" Name="MonitorService" DisplayName="Process Monitor" Start="auto" Account="LocalSystem" ErrorControl="ignore" Interactive="no" />
+        <ServiceControl Id="StartService" Name="MonitorService" Start="install" Stop="both" Remove="uninstall" Wait="yes" />
+      </Component>
+
+      <!-- ProcessMonitor.Service.exe.config -->
+      <Component Id="ServiceConfig" Guid="17B2A205-FB12-414F-AC9B-A6A278B4483C">
+        <File Id="ServiceConfigFile" Name="ProcessMonitor.Service.exe.config" Source="$(var.ProcessMonitor.Service.TargetDir)" KeyPath="yes" />
+      </Component>
+
+      <!-- ProcessMonitor.Service.pdb -->
+      <Component Id="ServicePdb" Guid="C3014C16-2F6F-42D3-B8D9-AC934E69513E">
+        <File Id="ServicePdbFile" Name="ProcessMonitor.Service.pdb" Source="$(var.ProcessMonitor.Service.TargetDir)" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+	</Fragment>
+</Wix>

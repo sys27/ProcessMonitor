@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Variables.wxi?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <Product Id="$(var.ProductCode)" Name="$(var.ProductName)" Language="1033" Version="$(var.ProductVersion)" Manufacturer="$(var.Manufacturer)" UpgradeCode="$(var.UpgradeCode)">
+    <Package InstallerVersion="200" Compressed="yes" />
+
+    <Media Id="1" Cabinet="Main.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" />
+      </Directory>
+
+      <Directory Id="CommonAppDataFolder">
+        <Directory Id="ProcessMonitorFolder" Name="ProcessMonitor" />
+        <Directory Id="MonitorServiceFolder" Name="MonitorService" />
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="$(var.ProductName)" />
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Icon Id="ProgramIcon.exe" SourceFile="$(var.ProcessMonitor.App.TargetPath)" />
+
+    <FeatureRef Id="Complete" />
+
+    <UI Id="MyWixUI_Mondo">
+      <UIRef Id="WixUI_Mondo" />
+      <UIRef Id="WixUI_ErrorProgressText" />
+    </UI>
+
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+    <Property Id="ARPPRODUCTICON" Value="ProgramIcon.exe" />
+    <PropertyRef Id="NETFRAMEWORK40CLIENT" />
+    <Condition Message="This application is only supported on Windows XP or higher.">
+      <![CDATA[Installed or (VersionNT >= 501)]]>
+    </Condition>
+    <Condition Message="This application requires .Net Framework 4.0 Client Profile. Please install the .Net Framework then run this installer again.">
+      <![CDATA[Installed or NETFRAMEWORK40CLIENT]]>
+    </Condition>
+  </Product>
+</Wix>

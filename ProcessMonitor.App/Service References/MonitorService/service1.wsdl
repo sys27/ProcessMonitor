@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Monitor" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ProcessMonitor" />
+      <xsd:import namespace="http://schemas.microsoft.com/Message" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMonitor_Start_InputMessage">
+    <wsdl:part name="parameters" element="tns:Start" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_Start_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_Stop_InputMessage">
+    <wsdl:part name="parameters" element="tns:Stop" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_Stop_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StopResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_AddToWatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddToWatch" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_AddToWatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddToWatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_RemoveWatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveWatch" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_RemoveWatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveWatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_ClearWatchs_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClearWatchs" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_ClearWatchs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClearWatchsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_Reset_InputMessage">
+    <wsdl:part name="parameters" element="tns:Reset" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_Reset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_GetTotalWorkTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalWorkTime" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_GetTotalWorkTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalWorkTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_GetWatchList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWatchList" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_GetWatchList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWatchListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_LoadWatchs_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadWatchs" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_LoadWatchs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadWatchsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_SaveWatchs_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveWatchs" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_SaveWatchs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveWatchsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_SaveStatistics_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveStatistics" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_SaveStatistics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_GetInterval_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInterval" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_GetInterval_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIntervalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_SetInterval_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetInterval" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_SetInterval_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetIntervalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_IsStarted_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsStarted" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_IsStarted_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsStartedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_GetStatistics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatistics" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_GetStatistics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_GetAllProcesses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProcesses" />
+  </wsdl:message>
+  <wsdl:message name="IMonitor_GetAllProcesses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProcessesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMonitor">
+    <wsdl:operation name="Start">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/Start" message="tns:IMonitor_Start_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/StartResponse" message="tns:IMonitor_Start_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Stop">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/Stop" message="tns:IMonitor_Stop_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/StopResponse" message="tns:IMonitor_Stop_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddToWatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/AddToWatch" message="tns:IMonitor_AddToWatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/AddToWatchResponse" message="tns:IMonitor_AddToWatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveWatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/RemoveWatch" message="tns:IMonitor_RemoveWatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/RemoveWatchResponse" message="tns:IMonitor_RemoveWatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClearWatchs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/ClearWatchs" message="tns:IMonitor_ClearWatchs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/ClearWatchsResponse" message="tns:IMonitor_ClearWatchs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Reset">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/Reset" message="tns:IMonitor_Reset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/ResetResponse" message="tns:IMonitor_Reset_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalWorkTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/GetTotalWorkTime" message="tns:IMonitor_GetTotalWorkTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/GetTotalWorkTimeResponse" message="tns:IMonitor_GetTotalWorkTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWatchList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/GetWatchList" message="tns:IMonitor_GetWatchList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/GetWatchListResponse" message="tns:IMonitor_GetWatchList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadWatchs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/LoadWatchs" message="tns:IMonitor_LoadWatchs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/LoadWatchsResponse" message="tns:IMonitor_LoadWatchs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveWatchs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/SaveWatchs" message="tns:IMonitor_SaveWatchs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/SaveWatchsResponse" message="tns:IMonitor_SaveWatchs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveStatistics">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/SaveStatistics" message="tns:IMonitor_SaveStatistics_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/SaveStatisticsResponse" message="tns:IMonitor_SaveStatistics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInterval">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/GetInterval" message="tns:IMonitor_GetInterval_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/GetIntervalResponse" message="tns:IMonitor_GetInterval_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetInterval">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/SetInterval" message="tns:IMonitor_SetInterval_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/SetIntervalResponse" message="tns:IMonitor_SetInterval_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsStarted">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/IsStarted" message="tns:IMonitor_IsStarted_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/IsStartedResponse" message="tns:IMonitor_IsStarted_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatistics">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/GetStatistics" message="tns:IMonitor_GetStatistics_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/GetStatisticsResponse" message="tns:IMonitor_GetStatistics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProcesses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitor/GetAllProcesses" message="tns:IMonitor_GetAllProcesses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitor/GetAllProcessesResponse" message="tns:IMonitor_GetAllProcesses_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMonitor" type="tns:IMonitor">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Start">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/Start" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Stop">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/Stop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToWatch">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/AddToWatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveWatch">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/RemoveWatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearWatchs">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/ClearWatchs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reset">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/Reset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalWorkTime">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/GetTotalWorkTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWatchList">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/GetWatchList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadWatchs">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/LoadWatchs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveWatchs">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/SaveWatchs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveStatistics">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/SaveStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterval">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/GetInterval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetInterval">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/SetInterval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsStarted">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/IsStarted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatistics">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/GetStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProcesses">
+      <soap:operation soapAction="http://tempuri.org/IMonitor/GetAllProcesses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Monitor">
+    <wsdl:port name="BasicHttpBinding_IMonitor" binding="tns:BasicHttpBinding_IMonitor">
+      <soap:address location="http://192.168.1.100:4325/ProcessMonitor" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

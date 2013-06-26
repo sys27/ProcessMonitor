@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Variables.wxi?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <DirectoryRef Id="ProgramMenuDir">
+      <Component Id="AppShortcut" Guid="28CA274B-5852-4AFA-84C6-2D5A89B8A165">
+        <Shortcut Id="ProgramShortcut" Name="$(var.ProductName)" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]$(var.ProcessMonitor.App.TargetFileName)" />
+        <Shortcut Id="DesktopProgramShortcut" Name="$(var.ProductName)" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]$(var.ProcessMonitor.App.TargetFileName)" Directory="DesktopFolder" />
+        <Shortcut Id="UninstallProgram" Name="Uninstall Process Monitor" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+        <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\$(var.ProductName)" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+	</Fragment>
+</Wix>

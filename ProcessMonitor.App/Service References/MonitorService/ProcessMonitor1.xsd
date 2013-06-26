@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ProcessMonitor" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ProcessMonitor" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfWatchProcess">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WatchProcess" nillable="true" type="tns:WatchProcess" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWatchProcess" nillable="true" type="tns:ArrayOfWatchProcess" />
+  <xs:complexType name="WatchProcess">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Milliseconds" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="Process" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WatchProcess" nillable="true" type="tns:WatchProcess" />
+</xs:schema>

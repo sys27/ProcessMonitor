@@ -1,0 +1,146 @@
+﻿<Window x:Class="ProcessMonitor.App.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:ProcessMonitor.App.Views"
+        Title="Process Monitor" Width="800" Height="450" WindowStartupLocation="CenterScreen"
+        Icon="..\Images\Icon.ico">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Path=StartMonitorCommand}" Modifiers="Ctrl" Key="R" />
+        <KeyBinding Command="{Binding Path=StopMonitorCommand}" Modifiers="Ctrl+Shift" Key="R" />
+        <KeyBinding Command="{Binding Path=ResetMonitorCommand}" Modifiers="Alt+Shift" Key="R" />
+        <KeyBinding Command="{Binding Path=AddWatchCommand}" Modifiers="Ctrl+Shift" Key="A" />
+        <KeyBinding Command="{Binding Path=RemoveWatchCommand}" Key="Delete" />
+        <KeyBinding Command="{Binding Path=ClearWatchsCommand}" Modifiers="Shift" Key="Delete" />
+        <KeyBinding Command="{Binding Path=UpdateCommand}" Modifiers="Ctrl" Key="U" />
+        <KeyBinding Command="{Binding Path=ConnectCommand}" Modifiers="Ctrl+Shift" Key="C" />
+        <KeyBinding Command="{Binding Path=DisconnectCommand}" Modifiers="Ctrl+Shift" Key="D" />
+        <KeyBinding Command="{Binding Path=ExitCommand}" Modifiers="Alt" Key="F4" />
+        <KeyBinding Command="{Binding Path=AboutCommand}" Key="F1" />
+    </Window.InputBindings>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="Load watchs" Command="{Binding Path=LoadWatchsCommand}" />
+                <MenuItem Header="Save watchs" Command="{Binding Path=SaveWatchsCommand}" />
+                <Separator />
+                <MenuItem Header="Open statistics" Command="{Binding Path=OpenStatisticsCommand}" />
+                <MenuItem Header="Save statistics" Command="{Binding Path=SaveStatisticsCommand}" />
+                <MenuItem Header="Donwload statistics" Command="{Binding Path=DownloadStatisticsCommand}" />
+                <Separator />
+                <MenuItem Header="Exit" Command="{Binding Path=ExitCommand}" InputGestureText="Alt+F4">
+                    <MenuItem.Icon>
+                        <Image Source="..\Images\Exit.png" Width="16" Height="16" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Monitor">
+                <MenuItem Header="Start" Command="{Binding Path=StartMonitorCommand}" InputGestureText="Ctrl+R">
+                    <MenuItem.Icon>
+                        <Image Source="..\Images\Start.png" Width="16" Height="16" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Stop" Command="{Binding Path=StopMonitorCommand}" InputGestureText="Ctrl+Shift+R">
+                    <MenuItem.Icon>
+                        <Image Source="..\Images\Stop.png" Width="16" Height="16" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Reset" Command="{Binding Path=ResetMonitorCommand}" InputGestureText="Alt+Shift+R">
+                    <MenuItem.Icon>
+                        <Image Source="..\Images\Reset.png" Width="16" Height="16" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Add a watch" Command="{Binding Path=AddWatchCommand}" InputGestureText="Ctrl+Shift+A">
+                    <MenuItem.Icon>
+                        <Image Source="..\Images\Add.png" Width="16" Height="16" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Remove a watch" Command="{Binding Path=RemoveWatchCommand}" InputGestureText="Del">
+                    <MenuItem.Icon>
+                        <Image Source="..\Images\Remove.png" Width="16" Height="16" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Clear watchs" Command="{Binding Path=ClearWatchsCommand}" InputGestureText="Shift+Del">
+                    <MenuItem.Icon>
+                        <Image Source="..\Images\Clear.png" Width="16" Height="16" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Update" Command="{Binding Path=UpdateCommand}" InputGestureText="Ctrl+U">
+                    <MenuItem.Icon>
+                        <Image Source="..\Images\Update.png" Width="16" Height="16" />
+                    </MenuItem.Icon></MenuItem>
+                <Separator />
+                <MenuItem Header="Connect" Command="{Binding Path=ConnectCommand}" InputGestureText="Ctrl+Shift+C">
+                    <MenuItem.Icon>
+                        <Image Source="..\Images\Connect.png" Width="16" Height="16" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Disconnect" Command="{Binding Path=DisconnectCommand}" InputGestureText="Ctrl+Shift+D">
+                    <MenuItem.Icon>
+                        <Image Source="..\Images\Disconnect.png" Width="16" Height="16" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="About" Command="{Binding Path=AboutCommand}" InputGestureText="F1" />
+            </MenuItem>
+        </Menu>
+
+        <ToolBar Grid.Row="1">
+            <Button Command="{Binding Path=StartMonitorCommand}">
+                <Image Source="..\Images\Start.png" Width="16" Height="16" />
+            </Button>
+            <Button Command="{Binding Path=StopMonitorCommand}">
+                <Image Source="..\Images\Stop.png" Width="16" Height="16" />
+            </Button>
+            <Button Command="{Binding Path=ResetMonitorCommand}">
+                <Image Source="..\Images\Reset.png" Width="16" Height="16" />
+            </Button>
+            <Separator />
+            <Button Command="{Binding Path=AddWatchCommand}">
+                <Image Source="..\Images\Add.png" Width="16" Height="16" />
+            </Button>
+            <Button Command="{Binding Path=RemoveWatchCommand}">
+                <Image Source="..\Images\Remove.png" Width="16" Height="16" />
+            </Button>
+            <Button Command="{Binding Path=ClearWatchsCommand}">
+                <Image Source="..\Images\Clear.png" Width="16" Height="16" />
+            </Button>
+            <Button Command="{Binding Path=UpdateCommand}">
+                <Image Source="..\Images\Update.png" Width="16" Height="16" />
+            </Button>
+            <Separator />
+            <Button Command="{Binding Path=ConnectCommand}">
+                <Image Source="..\Images\Connect.png" Width="16" Height="16" />
+            </Button>
+            <Button Command="{Binding Path=DisconnectCommand}">
+                <Image Source="..\Images\Disconnect.png" Width="16" Height="16" />
+            </Button>
+            <Separator />
+            <Button Command="{Binding Path=ExitCommand}">
+                <Image Source="..\Images\Exit.png" Width="16" Height="16" />
+            </Button>
+        </ToolBar>
+
+        <ListView x:Name="watchListBox" Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Process" Width="600" DisplayMemberBinding="{Binding Path=Process}" />
+                    <GridViewColumn Header="Total Time" Width="150" DisplayMemberBinding="{Binding Path=Milliseconds}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StatusBar Grid.Row="3">
+            <TextBlock x:Name="totalTimeBox" />
+        </StatusBar>
+    </Grid>
+</Window>
